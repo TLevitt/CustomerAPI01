@@ -41,6 +41,7 @@ The integration tests utilize the Microsoft.AspNetCore.Mvc.Testing.WebApplicatio
 Only a few tests were created and some just stubbed due to time constraints.
 
 The tests can be run inside visual studio in the Test Explorer or by running:
+
 dotnet test CustomerAPI01.Test.csproj in a command prompt
 
 # Observability
@@ -53,6 +54,7 @@ The CustomerAPI contains a dockerfile to containerize the API.  Another disclosu
 
 The container can be ran and debugged directly from Visual Studio 2022.  It can also be ran from a command line using:
 docker build -t CustomerAPI:dev .
+
 docker run CustomerAPI:dev
 
 # Kubernetes
