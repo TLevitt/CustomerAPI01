@@ -53,6 +53,7 @@ The WebAPI is simply using the basic OpenTelemetry with Tracing, Metrics, and Lo
 The CustomerAPI contains a dockerfile to containerize the API.  Another disclosure, this is simply a checkbox when creating the project in Visual Studio 2022.  The docker file exposes ports 8080/8081 for http/https traffic, utilizes a Windows build, and publishes the release version of the csproj to the /app directory
 
 The container can be ran and debugged directly from Visual Studio 2022.  It can also be ran from a command line using:
+
 docker build -t CustomerAPI:dev .
 
 docker run CustomerAPI:dev
