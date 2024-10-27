@@ -1,5 +1,10 @@
+using CustomerAPI01;
 using CustomerAPI01.Data;
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 public class Program
 {
@@ -20,6 +25,16 @@ public class Program
         });
         builder.Services.AddScoped<CustomerRepository>();
 
+        builder.Services.AddOpenTelemetry()
+        .ConfigureResource(resource => resource.AddService("CustomerAPI"))
+            .WithTracing(tracerProviderBuilder => tracerProviderBuilder
+                .AddAspNetCoreInstrumentation()
+                .AddConsoleExporter())
+            .WithMetrics(metricProviderBuilder => metricProviderBuilder
+                .AddAspNetCoreInstrumentation()
+                .AddConsoleExporter())
+            .WithLogging(loggingBuilder => loggingBuilder
+                .AddConsoleExporter());
 
         var app = builder.Build();
 
